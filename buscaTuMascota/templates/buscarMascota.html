@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Busqueda{% endblock %}
+
+{% block titulo %}Aqui la informacion de tu Mascota{% endblock %}
+
+{% block content %}
+<script src="{% static 'buscaTuMascota/script.js' %}"></script>
+
+<div class="container col-4">
+    <!-- <form action="" method="GET" onsubmit="return validarRUT()">
+        <div class="form-group">
+            <input type="text" name="rut" id="rut" class="form-control ">
+        </div>
+        <div class="text-center">
+            <span class="badge bg-danger p-2 m-2" id="error"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Buscar" class="form-control  btn btn-success mt-2">
+        </div>
+    </form> -->
+
+    {% if resultado %}
+    <label for="id">ID Mascota</label>
+    <p id="id" class="form-control ">{{resultado.id}}</p>
+    <label for="nombre">Nombre</label>
+    <p id="nombre" class="form-control ">{{resultado.nombre}}</p>
+    <label for="fecha">Fecha</label>
+    <p id="Fecha Nacimiento" class="form-control ">{{resultado.fechaNacimiento}}</p>
+    <label for="Especie">Especie</label>
+    <p id="especie" class="form-control ">{{resultado.especie}}</p>
+    <label for="raza">Raza</label>
+    <p id="raza" class="form-control ">{{resultado.raza}}</p>
+    <label for="color">Color</label>
+    <p id="color" class="form-control ">{{resultado.color}}</p>
+    <label for="telefono">Telefono</label>
+    <p id="telefono" class="form-control ">{{resultado.telefonoContacto}}</p>
+    <label for="direccion">Direccion</label>
+    <p id="direccion" class="form-control ">{{resultado.direccion}}</p>
+    <label for="nota">Nota</label>
+    {% if resultado.nota == "" %}
+    <p id="nota" class="form-control ">Sin comentarios</p>
+    {% else %}
+    <p id="nota" class="form-control ">{{resultado.nota}}</p>
+    {% endif %}
+    <label for="perdido">¿Esta perdido?</label>
+    {% if resultado.estaPerdido == False %}
+    <p id="perdido" class="form-control  bg-success">No</p>
+    {% else %}
+    <p id="perdido" class="form-control bg-danger text-white">Si</p>
+    {% endif %}
+</div>
+
+</tbody>
+</table>
+{% else %}
+<div class="container text-center">
+    <h2>La busqueda que realizaste no encontro resultados</h2>
+</div>
+{% endif %}
+
+{% endblock %}

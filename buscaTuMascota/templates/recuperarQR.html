@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Recuperar QR{% endblock %}
+
+{% block titulo %}Recuperacion de codigo QR{% endblock %}
+
+{% block content %}
+<div class="container col-4">
+    <form action="" method="GET" onsubmit="return validarRUT()">
+        <div class="form-group">
+            <input type="text" class="form-control" name="rut" id="rut" placeholder="Ejemplo: 11111111-1 (Solo guion)">
+            <div class="text-center">
+                <span class="badge bg-danger p-2 m-2" id="error"></span>
+            </div>
+            <input type="submit" class="form-control btn btn-success mt-1" value="Buscar">
+        </div>
+    </form>
+</div>
+<hr class="m-4">
+{% if mascotas %}
+<div class="container mt-4">
+    <table class="table">
+        <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">QR</th>
+        </thead>
+        <tbody>
+            {% for mascota in mascotas %}
+            <tr>
+                <th scope="row">{{mascota.id}}</th>
+                <td>{{mascota.nombre}}</td>
+                <td>{{mascota.direccion}}</td>
+                <td><a class=" btn btn-success" href="/recuperarQR/?qr={{mascota.qr}}">Recuperar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% elif qr %}
+<div class="container text-center">
+    <img src="{% static 'buscaTuMascota/qr.png' %}" alt="qr" width="15%" height="15%">
+    <a class="btn btn-success" href="{% static 'buscaTuMascota/qr.png' %}" download="Qr">Descargar</a>
+</div>
+{% endif %}
+
+<script src="{% static 'buscaTuMascota/script.js' %}"></script>
+{% endblock %}
