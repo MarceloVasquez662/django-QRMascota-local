@@ -198,3 +198,10 @@ function validarDireccion() {
     }
 }
 
+function imprimirQR() {
+    let contenido = document.getElementById("imagenQR").innerHTML;
+    let contenidoOriginal = document.body.innerHTML;
+    document.body.innerHTML = contenido;
+    window.print();
+    document.body.innerHTML = contenidoOriginal;
+}

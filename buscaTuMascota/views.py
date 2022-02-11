@@ -63,15 +63,15 @@ def buscarMascota(request):
         return redirect("/formularioMascota")
 
 
-def recuperarQR(request):
+def recuperar(request):
     if request.method == "GET" and "rut" in request.GET:
         mascotas = Mascota.objects.filter(rutPropietario=request.GET["rut"])
-        return render(request, "recuperarQR.html", {"mascotas": mascotas})
+        return render(request, "recuperar.html", {"mascotas": mascotas})
     elif request.method == "GET" and "qr" in request.GET:
         crearQR(request.GET["qr"])
-        return render(request, "recuperarQR.html", {"qr": True})
+        return render(request, "recuperar.html", {"qr": True})
 
-    return render(request, "recuperarQR.html")
+    return render(request, "recuperar.html")
 
 
 def crearQR(textoqr):

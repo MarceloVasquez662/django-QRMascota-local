@@ -32,7 +32,7 @@
                 <th scope="row">{{mascota.id}}</th>
                 <td>{{mascota.nombre}}</td>
                 <td>{{mascota.direccion}}</td>
-                <td><a class=" btn btn-success" href="/recuperarQR/?qr={{mascota.qr}}">Recuperar</a>
+                <td><a class=" btn btn-success" href="/recuperar/?qr={{mascota.qr}}">Recuperar</a>
                 </td>
             </tr>
             {% endfor %}
@@ -41,8 +41,10 @@
 </div>
 {% elif qr %}
 <div class="container text-center">
-    <img src="{% static 'buscaTuMascota/qr.png' %}" alt="qr" width="15%" height="15%">
-    <a class="btn btn-success" href="{% static 'buscaTuMascota/qr.png' %}" download="Qr">Descargar</a>
+    <div id="imagenQR">
+        <img src="{% static 'buscaTuMascota/qr.png' %}" alt="qr" width="30%" height="30%">
+    </div>
+    <a class="btn btn-success" onclick="imprimirQR()">Descargar</a>
 </div>
 {% endif %}
 

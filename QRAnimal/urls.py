@@ -23,5 +23,5 @@ urlpatterns = [
     path('formularioMascota/', views.formularioMascota),
     path('agregar/', views.agregar),
     path('buscarMascota/', views.buscarMascota),
-    path('recuperarQR/', views.recuperarQR),
+    path('recuperar/', views.recuperar),
 ]
